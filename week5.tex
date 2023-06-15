@@ -1,0 +1,163 @@
+\subsection{Compactification of Elliptic Curve}\label{subsec:compact-ellptc-curve}
+Let $X \subset \C^2$ be the curve satisfying
+$$y^2 = 4x^3 - 20a_2x - 28a_4$$
+We know that the right hand side has 3 distinct roots and we would like to use the Implicit Function Theorem to conclude that $X$ is smooth. Unfortunately, we don't yet have the theorem for several complex variables (indeed we don't even know yet what it means for a function in more than one variable to be holomorphic). But there is a weaker version of the statement that is enough for us.
+\begin{theorem}[(Weak) Implicit Function Theorem]\label{thm:weak-imft}
+Suppose $f(x, y)$ is a $C^1$ function (when viewed as a function from $\R^4$ to $\R^2$) that is separately holomorphic in each variable. Then if $f(x_0, y_0) = 0$ and $\frac{\partial f}{\partial y}(x_0, y_0) \neq 0$ then we can solve for $y$ as a function of $x$ (i.e. we get $y = y(x)$) with $y(x_0) = y_0$. 
+\end{theorem}
+\begin{proof}
+    Suppose we write $x = x_1 + ix_2, y = y_1 + iy_2$ and $z = f(x, y)$ so that $z = z_1 + iz_2$ or $f = f_1 + if_2$. 
+    For a fixed $x$ we have 
+    $$dz = \frac{\partial f}{\partial y}dy$$
+    and
+    $$d\ol{z} = \ol{\frac{\partial f}{\partial y}} d\ol{y}$$
+    Therefore 
+    $$dz \wedge d\ol{z} = \abs{\frac{\partial f}{\partial y}}^2 dy \wedge d \ol{y}$$
+
+    Since $dy = dy_1 + idy_2$ and $d\ol{y} = dy_1 - i dy_2$ we compute that 
+    $$dy \wedge d\ol{y} = -2i dy_1 \wedge dy_2$$
+    Similarly of course we get
+    $$dz \wedge d\ol{z} = -2i dz_1 \wedge dz_2$$
+    This means that 
+    $$dz_1 \wedge dz_2 = \abs{\frac{\partial f}{\partial y}}^2 dy_1 \wedge dy_2$$
+    In particular this means that $\frac{\partial (z_1, z_2)}{\partial (y_1, y_2)}$ is invertible at $(x_0, y_0)$ and so by the Real Implicit Function Theorem we can write $y$ as a function of $x$ so that $f(x, y(x)) = 0$ for all $x$ in some open neighbourhood of $x_0$. All that remains to do is show that $y$ is holomorphic. Differentiating $f(x, y(x))$ with respect to $x$ we get 
+    \begin{align*}
+        0 = \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y} \left( \frac{\partial y}{\partial x}dx + \frac{\partial y}{\partial \ol{x}} d\ol{x} \right)
+    \end{align*}
+    Note that there is no $\partial/\partial \ol{x}$ term on the left. Therefore by linear independence of $\partial/\partial x$ and $\partial/\partial \ol{x}$ we conclude that 
+    $$\frac{\partial y}{\partial \ol{x}} = 0$$
+    Thus $y$ is indeed holomorphic.
+\end{proof}
+
+Now that we have this result we can consider the curve again. Suppose we have 
+$$f(x, y) = y^2 - (4x^3 - 20a_2 x - 28a_4)$$
+
+We want to show that we have local coordinates for every point in the zero set of $f$.
+Notice that 
+$$\frac{\partial f}{\partial y} = 2y$$
+so for $y \neq 0$ we know that $\frac{\partial f}{\partial y}$ is invertible so we can solve for $y$ as a function of $x$. We know $y$ is 0 for exactly 3 points, namely the roots of the cubic polynomial in $x$. However these roots must be simple (a cubic polynomial can have at most 3 distinct roots and we have exactly that) so in particular $\frac{\partial f}{\partial x}$ is non-zero at these points. Therefore in a neighbourhood of these points we can solve for $x$ as a function of $y$.
+
+Recall how it is very useful to adjoin a point at $\infty$ to $\C$. We want to try doing the same thing for the curve $X$ by compactifying it. For this we will need to know about $n$-dimensional complex projective space.
+
+The $n$-dimensional complex projective space is the space of complex lines through the origin in $\C^{n + 1}$. In other words
+$$P^n(\C) := \C^{n + 1} \setminus \{0\}/\sim$$
+where
+$$(x_0, \dots, x_n) \sim (y_0, \dots, y_n) \Leftrightarrow (x_0, \dots, x_n) = \lambda(y_0, \dots, y_n)$$
+for some $\lambda \in \C$.
+
+This is an $n$-dimensional complex manifold which we can cover with $n + 1$ coordinate charts. For $i = 0, \dots, n$ we define 
+$$U_i := \{[x_0, \dots, x_n] \in P^n(\C) : x_i \neq 0\}$$
+Then we can have 
+\begin{align*}
+    \phi_i: U_i &\to \C^n\\
+    [x_0, \dots, x_n] &\mapsto \left( \frac{x_0}{x_i}, \dots, \widehat{\frac{x_i}{x_i}}, \dots, \frac{x_n}{x_i} \right)
+\end{align*}
+The inverse is given by
+\begin{align*}
+    \phi_i^{-1}: \C^n &\to U_i\\
+    (z_1, \dots, z_n) &\mapsto [z_1, \dots, z_{i}, 1, z_{i + 1}, \dots, z_n]
+\end{align*}
+It is then easy to see that the transition maps between these charts are given by rational functions (although we still haven't properly defined what it means for a multivariate complex function to be holomorphic certainly the theory should include rational functions). 
+
+Since we are looking at a curve in $\C^2$ we only really need to focus on $P^2(\C)$. We can decompose it like so
+$$P^2(\C) = \underbrace{\{[x, y, t] \in P^2(\C): t \neq 0\}}_{\C^2} \sqcup \underbrace{\{[x, y, t] \in P^2(\C): t = 0\}}_{P^1(\C)}$$
+For convenience we will call the first set above $U_0$. In $U_0 \subset P^2(\C)$, the coordinates are given by $(x/t, y/t)$. Writing the equation of the curve in these coordinates we get 
+$$ \left( \frac{y}{t} \right)^2 = 4 \left( \frac{x}{t} \right)^3 - 20a_2 \left( \frac{x}{t} \right) - 28a_4$$
+Written like this, the equation is just begging to be homogenised. Doing so, gives us the closure of $X$ in $P^2(\C)$
+$$X': y^2t = 4x^3 - 20a_2 xt^2 - 28a_4t^3$$
+The points of $X$ of course still lie in $X'$ which are given when $t \neq 0$. Therefore the new points occur when $t = 0$. Notice when $t = 0$, we must have $x = 0$. Therefore taking the closure we only have one new point, $[0, 1, 0]$ which we call a (or in this case the) point at infinity. Around this point the coordinates of $X'$ are given by $(x', t') := (x/y, t/y)$ so we dehomogenise with respect to $y$ (i.e. we divide through by $y^3$) giving us 
+$$t' = 4x'^3 - 20a_2 x' t'^2 - 28a_4t'^3$$
+In fact we can solve for $t'$ as a holomorphic function of $x'$ and even write out the first few terms of its power series 
+$$t' = 4x'^3 - 320a_2 x'^7 + \dots $$
+
+Note that since $X$ is a curve in $\C^2$ we have a natural map onto $\C$ which is given by simply projecting onto one of coordinates, say the first one. Say this map is given by $\varphi$. Then the question becomes can we extend $\varphi$ to $\varphi': X' \to S^2$ in such a way that $\varphi'([0, 1, 0]) = \infty$. In other words, we have the following diagram
+
+\adjustbox{scale=1.2, center}{%
+    \begin{tikzcd}
+    \mathbb{C}^2 \arrow[rd, "\pi_1"] & X \arrow[l, hook'] \arrow[d, "\varphi"] \arrow[r, "\subset", phantom] & X' \arrow[d, "\varphi'", dashed] \arrow[r, hook] & P^2(\mathbb{C}) \\
+                                   & \mathbb{C} \arrow[r, "\subset", phantom]                              & S^2                                              &                
+    \end{tikzcd}
+}
+where $\pi_1$ is the projection from $\C^2$ to $\C^1$ onto the first coordinate and $\varphi = \pi_1|_X$. We need to check that $\varphi'$ is holomorphic around $[0, 1, 0]$. Therefore naturally, we use the appropriate coordinates around this point, namely we have 
+$$X' \cap U_1 = \{[x_1, 1, t_1]\}$$
+where by above we know that 
+$$t_1 = 4x_1^3 - 320a_2 x_1^7 + \dots$$
+
+Recall that $X$ is a subset of $U_0$ so for the $t_1 \neq 0$ we know $[x_1/t_1, 1/t_1, 1] \in X \subset U_0$. Therefore
+$$ z := \varphi'([x_1, 1, t_1]) = \frac{x_1}{4x_1^3 - 320a_2 x_1^7 + \dots}$$
+We want to check that defining this to be $\infty$ at $x_1 = 0$ is holomorphic. For this we switch to coordinates at infinity 
+$$1/z = \frac{4x_1^3 - 320a_2 x_1^7 + \dots}{x_1}$$
+which \textit{does} extend holomorphically to $x_1 = 0$ and therefore $\varphi$ extends to $\varphi'$ holomorphically. Notice this also shows that $\varphi'$ has a double pole at $[0, 1, 0]$. 
+
+\secbreak
+
+We already knew by \autoref{thm:wp-parametrises-ellptc-curve} that, ignoring the points of $\Gamma$, the map $z \mapsto [\wp(z), \wp'(z), 1]$ was an injective holomorphic map on $\C/\Gamma$. The work done above shows that this map can be extended holomorphically to the points of $\Gamma$ by mapping them to $[0, 1, 0]$ and thus we have a biholomorphism between $\C/\Gamma$ and $X'$. We know that $\C/\Gamma$ is a torus which means in particular that the completed curve $X'$ is isomorphic to $S^1 \times S^1$. 
+
+% What we have effectively shown above is that $X'$ is a Riemann surface over $S^2$ (see \autoref{sec:riem-surf} for more details). We know we have an injective map from $\C/\Gamma$ to $X'$ given by $z \mapsto [\wp(z), \wp'(z), 1]$
+% Then we have a meromorphic, injective mapping
+% \begin{align*}
+%     \C/\Gamma &\to X'\\
+%     z &\mapsto (\wp(z), \wp'(z))
+% \end{align*}
+
+One might wonder whether there is an explicit formula for the inverse of this biholomorphism (which is of course only determined up to the addition of a constant in $\Gamma$). For this we take inspiration from the analogous situation that occurs with $\sin$ and $\cos$.
+
+Consider the curve
+$$C: y^2 = 1 - x^2$$
+in $\R^2$. We know this curve (the unit circle) is parameterised by $x = \cos \theta, y = \sin \theta$. What we would like to do is given a point $(x, y)$ on the curve recover what $\theta$ is (which will only be unique up to integer multiplies of $2\pi$). We see that 
+$$dy = \sin' \theta d\theta = \cos \theta d \theta = x d\theta$$
+Notice this implies that $d\theta = dy/x$
+From the definition of the curve we know that 
+$$xdx + ydy = 0 $$
+so in particular 
+$$d\theta = \frac{dy}{x} = - \frac{dx}{y}$$
+Then we can recover $\theta$ by 
+$$\theta = \int_{(1, 0)}^{(\cos \theta, \sin \theta)} \frac{dy}{x} = \int_0^{\sin \theta} \frac{dy}{\sqrt{1 - y^2}}$$
+in a neighbourhood of $(1, 0)$ (i.e. where $x \neq 0$). This is of course how we defined $\arcsin$ in first year.
+
+\begin{remark}
+    The integral above is not technically well-defined since the unit circle is not simply connected. It will depend on the path chosen between $(1, 0)$ and $(\cos \theta, \sin \theta)$. However the value for different paths will only differ by integer multiples of $2\pi$ as we expect. 
+\end{remark}
+
+With this in mind we can go back to our curve $X'$. Notice we have
+$$dx = \wp'(z)dz = ydz$$
+so in particular
+$$dz = \frac{dx}{y}$$
+for $y \neq 0$. From the definition of the curve we have
+$$2ydy = (12x^2 - 20a_2)dx$$
+and hence
+$$\frac{dy}{6x^2 - 10a_2} = \frac{dx}{y} = dz$$
+Then just like before we can recover $z$ by 
+$$z = \wp^{-1}(x) = \int_{[0, 1, 0]}^{[\wp(z), \wp'(z), 1]} \frac{dx}{y} = \int_{[0, 1, 0]}^{[\wp(z), \wp'(z), 1]} \frac{dx}{\sqrt{4x^3 - 20a_2x - 28a_4}}$$
+
+Again since a torus is not simply connected, the integral is not technically well-defined but answers will only differ by elements of $\Gamma$. 
+
+\section{Functions with prescribed zeroes and poles}
+We want to explore how constrained (or not) the space of holomorphic functions/meromorphic functions is. One way we can try exploring this is to ask whether we can always construct a holomorphic/meromorphic function with a given set of zeroes/poles. The answer in both cases is yes. We will begin by considering the case for poles. The case for zeroes will require us to build some theory about infinite products.
+
+\begin{theorem}[Mittag-Leffler]\label{thm:mittag-leffler}
+    Given a set of poles $\{b_k\} \subset \C$ such that $\lim_{k \to \infty} b_k = \infty$ and $\{P_k(z)\}$ set of polynomials without constant term, we can find a meromorphic function with poles $b_k$ and principal parts $P_k(1/(z - b_k))$. In fact the most general such meromorphic function on $\C$ is
+    $$f(z) = \sum_{k = 1}^\infty \left( P_k \left( \frac{1}{z - b_k} \right) - p_k(z) \right) + g(z)$$
+    where $p_k(z)$ are (well-chosen) polynomials to guarantee convergence and $g$ is any entire function.
+\end{theorem}
+\begin{remark}
+    The assumption $\lim_{k \to \infty} b_k = \infty$ ensures that the $b_k$ don't have a finite accumulation point. We know that the poles of meromorphic functions are isolated so this is certainly necessary.
+\end{remark}
+\begin{proof}
+    We can assume that $b_k$ are all non-zero. Then $P_k(1/(z - b_k))$ is holomorphic in $\abs{z} < \abs{b_k}$ and so we can expand it as a Taylor series at 0. Let $p_k(z)$ be sum of the first $n_k$ terms where $n_k$ is chosen so that
+    $$\abs{P_k \left( \frac{1}{z - b_k} \right) - p_k(z)} \leq \frac{1}{2^k}$$
+    for $\abs{z} \leq \abs{b_k}/2$. Then we claim that 
+    $$\sum_{k = 1}^\infty P_k \left( \frac{1}{z - b_k} \right) - p_k(z)$$
+    converges absolutely and uniformly on compact subsets of $\C$. In fact we will show we have convergence on $\abs{z} \leq r$ for any $r$. In order to see this, choose $m$ so that $\abs{b_k} > 2r$ for $k \geq m$. Then for $\abs{z} \leq r < \abs{b_k}/2$ for such $k$ we have 
+    $$\sum_{k = m}^\infty \abs{P_k \left( \frac{1}{z - b_k} \right) - p_k(z)} \leq \sum_{k = m}^\infty \frac{1}{2^k}$$
+    which we know converges. 
+
+    Suppose we have have two functions with the given poles and principal parts. Then their difference is holomorphic on the complex plane and hence entire. This gives the second part of the theorem.
+\end{proof}
+
+\subsection{Infinite products}
+Suppose $b_k$ is a sequence of points in $\C$. Then naturally we want to say that 
+$$\prod_{k = 1}^\infty b_k := \lim_{n \to \infty} \prod_{k = 1}^n b_k$$
+In other words, the infinite product `should' converge if the partial products do. But of course the partial products might simply converge if one of the $b_k$ is zero. Therefore we will also assert the the limit should be non-zero. But of course there are times when we want to allow 0 to be a point in the sequence (we are building of course to taking products of functions which may take the value of 0 at certain points and indeed our ultimate goal is to build holomorphic functions with a presecribed set of zeros). Therefore, we will say $\prod b_k$ converges if only finitely many of the terms are 0 and the partial products of the remaining terms converges to a non-zero finite complex number. Notice that a necessary condition for convergence is $b_k \to 1$ since
+$$b_k = \frac{\prod_{j = 1}^k b_j}{\prod_{j = 1}^{k - 1} b_j}$$
+Therefore we often write $b_k = 1 + a_k$ where $a_k \to 0$. 

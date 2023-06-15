@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="793.70081"
+   height="1122.5197"
+   viewBox="0 0 210 296.99999"
+   version="1.1"
+   id="svg7031"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="riem_surf_cuts.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7033"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     showborder="false"
+     inkscape:zoom="1.7357085"
+     inkscape:cx="338.19044"
+     inkscape:cy="552.51215"
+     inkscape:window-width="1920"
+     inkscape:window-height="986"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs7028">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect938"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect930"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect926"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.3175;stroke-dasharray:none"
+       d="M 87.235581,96.934643 V 178.8908"
+       id="path195" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.3175;stroke-dasharray:none"
+       d="M 46.257522,137.91272 H 128.21366"
+       id="path197" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.529167;stroke-dasharray:none;stroke-dashoffset:8.25;paint-order:markers stroke fill"
+       d="m 122.76442,137.91273 c 11.84321,-1e-5 23.68616,-1e-5 35.52884,-2e-5"
+       id="path924"
+       inkscape:path-effect="#path-effect926"
+       inkscape:original-d="m 122.76442,137.91273 c 11.84321,2.6e-4 23.68616,2.5e-4 35.52884,-2e-5" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.529167;stroke-dasharray:none;stroke-dashoffset:8.25;paint-order:markers stroke fill"
+       d="M 69.536582,106.45773 C 63.810071,96.074314 58.083735,85.691214 52.357572,75.308428"
+       id="path928"
+       inkscape:path-effect="#path-effect930"
+       inkscape:original-d="M 69.536582,106.45773 C 63.809982,96.074363 58.083642,85.691265 52.357572,75.308428"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.529167;stroke-dasharray:none;stroke-dashoffset:8.25;paint-order:markers stroke fill"
+       d="m 52.749095,199.37125 c 5.72716,-10.22746 11.454368,-20.45501 17.181619,-30.68264"
+       id="path936"
+       inkscape:path-effect="#path-effect938"
+       inkscape:original-d="m 52.749095,199.37125 c 5.72747,-10.22729 11.454679,-20.45484 17.181619,-30.68264"
+       inkscape:export-filename="..\integral_contour.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <circle
+       style="fill:#000000;stroke:none;stroke-width:0.529167"
+       id="path355"
+       cx="122.76442"
+       cy="137.91269"
+       r="1.3216045" />
+    <circle
+       style="fill:#000000;stroke:none;stroke-width:0.529167"
+       id="circle1075"
+       cx="67.408043"
+       cy="-169.67926"
+       r="1.3216045"
+       transform="matrix(0.99986746,-0.01628047,-0.01628047,-0.99986746,0,0)" />
+    <circle
+       style="fill:#000000;stroke:none;stroke-width:0.529167"
+       id="circle1071"
+       cx="71.395485"
+       cy="105.91821"
+       r="1.3216045"
+       transform="rotate(0.73663043)"
+       inkscape:export-filename="..\riem_surf_cuts.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+  </g>
+</svg>

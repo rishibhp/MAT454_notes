@@ -1,0 +1,183 @@
+We have the following important theorem about closed forms on the plane (or subsets thereof). 
+\begin{theorem}\label{thm:integral-homotopic-curves}
+Let $\omega$ be a closed differential form in open $\Omega \subset \R^2$. If $\gamma_0, \gamma_1: [0, 1] \to \Omega$ homotopic curves (either with fixed endpoints or as closed curves) then
+$$\int_{\gamma_1} \omega = \int_{\gamma_2} \omega$$
+\end{theorem}
+
+From this, \autoref{thm:global-prim-in-simp-connected} follows as a corollary since it immediately implies that the integral over any closed curve is 0.
+\begin{theorem}\label{thm:global-prim-in-simp-connected}
+    A closed differential form $\omega$ in a simply connected open set $\Omega \subset \R^2$ has a global primitive.
+\end{theorem}
+
+\subsection{Cauchy's Integral Formula}
+We are very close to being able to state and prove Cauchy's Integral Formula. The one thing that is left is the winding number.
+\begin{definition}
+The winding number of a closed curve $\gamma$ with respect to a point $a$ (not on $\gamma$) is given by
+$$w(\gamma, a) := \frac{1}{2\pi i} \int_\gamma \frac{1}{z - a}dz$$
+\end{definition}
+
+It is clear that $w(\gamma, a)$ is an integer because it is the difference between 2 branches of $\log$. If $\gamma$ is the boundary of a circle then
+\begin{align*}
+    w(\gamma, a) = 
+    \begin{cases}
+        1 & a \text{ inside circle}\\
+        0 & a \text{ outside circle}
+    \end{cases}
+\end{align*}
+
+From \autoref{thm:integral-homotopic-curves}, it follows that $w(\gamma, a)$ is invariant under homotopy of $\gamma$ that does not pass through $a$. Since moving $\gamma$ a little bit is the same as moving $a$ a little bit, it also follows that $w(\gamma, \cdot)$ is constant on the connected components of the complement of $\gamma$. 
+
+\begin{theorem}
+    Suppose $f(z)$ is holomorphic in an open $\Omega \subset \C$ and $a$ is a point in $\Omega$. Let $\gamma$ be a nullhomotopic closed curve in $\Omega$. Then
+    $$\frac{1}{2\pi i}\int_\gamma \frac{f(z)}{z - a} dz = f(a) w(\gamma, a)$$
+\end{theorem}
+\begin{proof}
+    We define
+    $$g(z) = \begin{cases}
+        \frac{f(z) - f(a)}{z - a} & z \neq a\\
+        f'(a) & z = a
+    \end{cases}$$
+    We see that $g$ is continuous in $\Omega$ and holomorphic on $\Omega \setminus \{a\}$. Therefore $g(z) dz$ is closed by Cauchy's Theorem. Then the nullhomotopy of $\gamma$ implies that
+    $$\int_\gamma \frac{f(z) - f(a)}{z - a} dz = 0$$
+    Splitting the sum gets us the desired result
+    $$\int_\gamma \frac{f(z)}{z - a} dz = \int_\gamma \frac{f(a)}{z - a} dz = 2\pi i f(a) w(\gamma, a)$$
+    
+\end{proof}
+
+A very nice and important consequence of Cauchy's integral formula is that holomorphic functions are infinitely differentiable. Suppose $f$ is a holomorphic function in a neighbourhood of a closed disk $\abs{z} \leq r$. For $\abs{z} < r$, we have
+$$f(z) = \frac{1}{2\pi i}\int_\gamma \frac{f(\zeta)}{\zeta - z} d\zeta$$
+Then we can differentiate both sides (by differentiating under the integral sign) to get
+$$f'(z) = \frac{1}{2\pi i}\int_\gamma \frac{f(\zeta)}{(\zeta - z)^2} d\zeta$$
+and more generally
+$$f^{(n)}(z) = \frac{n!}{2\pi i} \int_\gamma \frac{f(\zeta)}{(\zeta - z)^{n + 1}} d\zeta$$
+
+We can summarise all this information about holomorphic function as follows.
+\begin{theorem} \label{thm:holom-tfae}
+    Suppose $f(z)$ is a continuous function on an open set $\Omega$. Then the following are equivalent:
+    \begin{enumerate}[label=\arabic*)]
+        \item $f(z)$ is holomorphic
+        \item $f(z) dz$ is closed
+        \item Given $\gamma$ the boundary of a circle of radius $r$ and $\abs{z} < r$, we have $$f(z) = \frac{1}{2\pi i}\int_\gamma \frac{f(\zeta)}{\zeta - z} d\zeta$$ 
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    We know that 1) $\Rightarrow$ 2) is Cauchy's theorem. We have shown 1) $\Rightarrow$ 3) above. 3) $\Rightarrow$ 1) is easy to see since we can differentiate under the integral sign. This only leaves 2) $\Rightarrow$ 1) which is known as Morera's theorem.
+
+    If $f(z) dz$ is closed then $f(z) dz$ locally has a primitive $g(z)$. Then
+    $$f(z)dz = dg = \frac{\partial g}{\partial z}dz + \frac{\partial g}{\partial \ol{z}} d\ol{z}$$
+    Since $dz$ and $d\ol{z}$ are linearly independent, we must have $\frac{\partial g}{\partial \ol{z}} = 0$. This also tells us that $f(z) = \frac{\partial g}{\partial z}$ and hence $f$ is holomorphic since the derivative of holomorphic functions is holomorphic.
+\end{proof}
+
+Not only are holomorphic functions infinitely differentiable, they are also analytic, which is to say every holomorphic function has a convergent power series expansion (defined locally of course) that represents the function.
+
+By Cauchy's Integral formula we know that if $f(z)$ is a holomorphic function in a neighbourhood of $\abs{z} \leq r$, then
+$$f(z) = \int_\gamma \frac{f(\zeta)}{\zeta - z} d\zeta$$
+where $\gamma$ is the boundary of the closed disk, $\abs{z} = r$.
+We can then write
+\begin{align*}
+    \frac{1}{\zeta - z} = \frac{1}{\zeta} \left( 1 - \frac{z}{\zeta} \right)^{-1} = \frac{1}{\zeta} \sum_{n = 0}^\infty \frac{z^n}{\zeta^n}
+\end{align*}
+We can substitute this into the integral formula to get
+$$ f(z) = \sum_{n = 0}^\infty \left( \frac{1}{2\pi i} \int_\gamma \frac{f(\zeta)}{\zeta^{n + 1}} d\zeta \right) z^n $$
+The coefficient of $z^n$ agrees with what we would expect since we know that $a_n = \frac{f^{(n)}(0)}{n!}$. This series converges whenever $\abs{z} < r$.
+
+We can also bound the Taylor coefficients. For example by substituting $z = re^{i \theta}$ we get
+$$f(re^{i \theta}) = \sum_{m = 0}^\infty a_m r^m e^{im \theta}$$
+We can multiply both sides by $e^{-in \theta}$ and integrate from $\theta = 0$ to $\theta = 2\pi$. This will cancel out all but the $a_n r^n e^{i n \theta}$ term in the series. Hence we get
+$$a_n r^n = \frac{1}{2\pi} \int_0^{2\pi} f(re^{i \theta}) e^{-in \theta} d\theta$$
+If we have $M(r) := \sup_{\abs{z} = r} \abs{f(z)}$ then
+$$\abs{a_n} \leq \frac{M(r)}{r^n}$$
+These are known as \textit{Cauchy's inequalities}.
+
+This immediately gives us Liouville's Theorem (a corollary of which is the Fundamental Theorem of Algebra).
+\begin{theorem}[Liouville's Theorem]
+    If $f(z)$ is holomorphic on $\C$ and bounded then $f$ is constant.
+\end{theorem}
+\begin{proof}
+    There is some $M$ such that $M(r) \leq M$ for all $r$. Therefore
+    $$\abs{a_n} \leq \frac{M}{r^n}$$
+    Therefore for $n \geq 1$, we can send $r \to \infty$ to conclude that $a_n = 0$. Therefore $f(z) = a_0$ is constant.
+\end{proof}
+
+A direct consequence of the integral formula is that holomorphic functions satisfy the Mean Value Property which is to say that given a closed disk $D$ of radius $r$, centered at a point $a$, the value of $f(a)$ is given by the mean value along the boundary of the disk. In formulae, we write
+$$f(a) = \frac{1}{2\pi} \int_{0}^{2 \pi} f(a + re^{i \theta}) d\theta $$
+
+Continuous functions that have the mean value property also satisfy the very important maximum modulus principle.
+\begin{theorem}[Maximum Modulus Principle]\label{thm:max-mod-prin}
+    Suppose $f(z)$ is a continuous complex-valued function defined on an open set $\Omega$ and $f$ satisfies the Mean Value Property. If $\abs{f}$ has a local max at $z_0 \in \Omega$, then $f$ is constant in a neighbourhood of $z_0$.
+\end{theorem}
+
+\subsection{Harmonic Functions, revisited}\label{subsec:harmonic-func-revisit}
+Earlier it was claimed that all real-valued harmonic functions are (locally) the real part of a holomorphic function and moreover this holomorphic function is unique up to the addition of a constant. Let us verify this claim. Let $g$ be a real-valued harmonic function. Then
+$$\frac{\partial^2 g}{\partial z \partial{\ol{z}}} = 0$$
+This means that $\frac{\partial g}{\partial z}$ is holomorphic and therefore $\frac{\partial g}{\partial z}dz$ locally has a holomorphic primitive. Let us call this primitive $f$. Then
+$$df = \frac{\partial g}{\partial z}dz$$
+Conjugating both sides we get
+$$d \ol{f} = \frac{\partial g}{\partial \ol{z}} d\ol{z}$$
+where $g$ is not conjugated since it is real valued. Therefore we have
+$$df + d \ol{f} = d(f + \ol{f}) = \frac{\partial g}{\partial z}dz + \frac{\partial g}{\partial \ol{z}} d\ol{z} = dg$$
+Therefore $g = f + \ol{f}$ up to the addition of a constant.
+
+It is clear that if $f(z)$ is a complex-valued functions with the Mean Value Property then the real and imaginary parts of $f$ have this property (we can simply equate the real and imaginary parts on both sides). Since harmonic functions are locally the real part of a holomorphic function, it follows that harmonic functions also satisfy the Mean Value Property. In fact any continuous function satisfying the Mean Value Property is harmonic, which we will soon prove.
+
+The natural question that arises now is whether given a real-valued harmonic function we can figure out what the corresponding holomorphic functions should be. Suppose the harmonic function is $g(z)$ and the holomorphic function is $f(z)$. We know there for some $R$ and any $\abs{z} < R$ we have
+\begin{align*}
+    f(z) = \sum_{n = 0}^\infty a_n z^n
+\end{align*}
+Moreover since $f$ is unique up to addition of a constant, we can assume that $f(0) = a_0$ is real. Then substituting $z = re^{i \theta}$ and equating the real part we get
+$$g(r \cos \theta, r \sin \theta) = a_0 + \frac{1}{2}\sum_{n = 0}^\infty (a_n r^n e^{in \theta} + \ol{a_n} r^n e^{-in \theta})$$
+Therefore we get that
+$$a_0 = \frac{1}{2\pi} \int_0^{2\pi} g(r \cos \theta, r \sin \theta) d\theta$$
+For the remaining coefficients, we can use our usual trick of multiplying by $e^{-in \theta}$ to conclude
+$$a_n = \frac{1}{\pi} \int_0^{2\pi} g(r \cos \theta, r \sin \theta) \frac{1}{r^n e^{in \theta}} d\theta$$
+Substituting these back into the expansion of $f$ we get
+$$f(z) = \sum_{n = 0}^\infty a_n z^n = \frac{1}{2\pi} \int_0^{2 \pi} g(r \cos \theta, r \sin \theta) \left[ 1 + 2 \sum_{n = 0}^\infty \left( \frac{z}{re^{i \theta}} \right)^n \right] d\theta$$
+We can evaluate the series and simplify things to get
+$$f(z) = \frac{1}{2\pi} \int_0^{2\pi} g(r \cos \theta, r \sin \theta) \frac{re^{i \theta} + z}{re^{i \theta} - z} d\theta$$
+Equating real parts again we get
+$$g(z) = \frac{1}{2\pi} \int_0^{2\pi} g(r \cos \theta, r \sin \theta) \frac{r^2 - \abs{z}^2}{\abs{re^{i \theta} - z}^2} d\theta$$
+\begin{remark}
+We call the function
+$$\frac{r^2 - \abs{z}^2}{\abs{re^{i \theta} - z}^2}$$
+the Poisson kernel.
+\end{remark}
+
+A classic problem with harmonic functions is the Dirichlet problem. In this case we work on the disk. 
+\begin{theorem}
+    Given a continuous function $f(\theta)$ which is periodic and has period $2\pi$ and given some $r > 0$, there exists a continuous function $F(z)$ on the closed disk $\abs{z} \leq r$ which is harmonic on the open disk (of radius $r$) with $F(re^{i \theta}) = f(\theta)$. Moreover $F$ is unique.
+\end{theorem}
+\begin{proof}
+    We can assume that $f$ is real-valued (otherwise we work with the real and imaginary parts of $f$ separately).
+
+    The uniqueness of $F$ follows from the maximum modulus principle. For existence we can define
+    $$F(z) = \frac{1}{2\pi} \int_0^{2\pi} f(\theta) \frac{r^2 - \abs{z}^2}{\abs{re^{i \theta} - z}^2} d\theta$$
+    which is harmonic because it is the real part of the holomorphic function
+    $$ \frac{1}{2\pi} \int_0^{2\pi} f(\theta) \frac{re^{i \theta} + z}{re^{i \theta} - z} d\theta $$
+    All that remains to check is that $\lim_{z \to re^{i \theta_0}} F(z) = f(\theta_0)$ which is a direct computation. As usual, more details can be found in my MAT354 notes.
+\end{proof}
+
+\begin{corollary}
+A continuous function $f(z)$ defined on an open $\Omega \subset \R^2$ with the Mean Value Property is harmonic.
+\end{corollary}
+\begin{proof} 
+    It suffices to check things locally. So let $z_0$ be some point in $\Omega$ and $D$ some disk in $\Omega$ that contains $z_0$. Then there exists a function $F$ which is continuous on $\ol{D}$ and harmonic on $D$ and which agrees with $f$ on the boundary of $D$. Since $F$ and $f$ both have the Mean Value Property so does $F - f$. Note this function is 0 on the boundary of $D$ and therefore is identically 0 on $D$ by the maximum modulus principle.
+\end{proof}
+
+\subsection{Zeros, poles and singularities}
+Suppose $f(z)$ is a holomorphic function such that $f(z_0) = 0$. Then near $z_0$ we can use the power series of $f$ to write
+$$f(z) = (z - z_0)^k f_1(z)$$
+where $f_1$ is holomorphic and non-zero at $z_0$. The integer $k$ is known as the order or multiplicity of $z_0$.
+
+\begin{definition}[Meromorphic functions]
+    A \textit{meromorphic function} on an open set $\Omega$ is a function that is holomorphic on the complement of a discrete subset of $\Omega$ and expressible in a neighbourhood of any point of $\Omega$ as the quotient of holomorphic functions $\frac{f(z)}{g(z)}$ (where of course $g$ is not identically 0).
+\end{definition}
+
+If $f(z)$ and $g(z)$ are holomorphic functions, we can write
+\begin{align*}
+    f(z) &= (z - z_0)^k f_1(z)\\
+    g(z) &= (z - z_0)^l g_1(z)
+\end{align*}
+where $f_1$ and $g_1$ are both non-zero at $z_0$. Then
+$$ \left( \frac{f}{g} \right)(z) = (z - z_0)^{k - l} \left( \frac{f_1}{g_1} \right)(z)$$
+
+If $k \geq l$, then $f/g$ extends holomorphically at $z_0$. Otherwise we have $\lim_{z \to z_0} (\frac{f}{g})(z) = \infty$, so $z_0$ is a pole of order $l - k$. The limit can be thought of as a convergence to the point at infinity in the Riemann sphere. Therefore we can also consider meromorphic functions as functions with values in $S^2$. With this we see that meromorphic functions are simply holomorphic functions with values in $S^2$.

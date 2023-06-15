@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="riem_map_polygon_open_edges.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.8000854"
+     inkscape:cx="353.8721"
+     inkscape:cy="520.53086"
+     inkscape:window-width="1920"
+     inkscape:window-height="986"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path967"
+       style="fill:none;stroke:#000000;stroke-width:0.264584;stroke-dasharray:none;stroke-dashoffset:17.9999;paint-order:markers stroke fill"
+       d="m 86.14937,167.63031 a 9.8868911,9.8868911 0 0 1 -9.38e-4,-0.13617 9.8868911,9.8868911 0 0 1 9.886891,-9.88689 9.8868911,9.8868911 0 0 1 9.886887,9.88689 v 0 a 9.8868911,9.8868911 0 0 1 -9.3e-4,0.13617" />
+    <path
+       id="path1920"
+       style="fill:none;stroke:#000000;stroke-width:0.264584;stroke-dasharray:0.793749, 0.264584;stroke-dashoffset:0;paint-order:markers stroke fill"
+       d="m 105.92128,167.63032 a 9.8868911,9.8868911 0 0 1 -9.885957,9.75073 9.8868911,9.8868911 0 0 1 -9.885953,-9.75074" />
+    <path
+       id="path1024"
+       style="fill:none;stroke:#000000;stroke-width:0.264584;stroke-dasharray:none;stroke-dashoffset:17.9999;paint-order:markers stroke fill"
+       d="m 105.48168,167.6301 0.42195,-0.72839 v 0" />
+    <path
+       id="path1168"
+       style="fill:none;stroke:#000000;stroke-width:0.264584;stroke-dasharray:none;stroke-dashoffset:17.9999;paint-order:markers stroke fill"
+       d="m 102.79256,167.63015 2.3318,-4.02518" />
+    <path
+       id="path1164"
+       style="fill:none;stroke:#000000;stroke-width:0.264584;stroke-dasharray:none;stroke-dashoffset:17.9999;paint-order:markers stroke fill"
+       d="m 100.10253,167.63017 3.65544,-6.30964" />
+    <path
+       id="path1160"
+       style="fill:none;stroke:#000000;stroke-width:0.264584;stroke-dasharray:none;stroke-dashoffset:17.9999;paint-order:markers stroke fill"
+       d="m 97.412492,167.63019 4.628608,-7.98917" />
+    <path
+       id="path1156"
+       style="fill:none;stroke:#000000;stroke-width:0.264584;stroke-dasharray:none;stroke-dashoffset:17.9999;paint-order:markers stroke fill"
+       d="m 86.653427,167.63037 -0.456513,0.78807 5.745754,-9.91873" />
+    <path
+       id="path1152"
+       style="fill:none;stroke:#000000;stroke-width:0.264584;stroke-dasharray:none;stroke-dashoffset:17.9999;paint-order:markers stroke fill"
+       d="m 94.72327,167.63017 5.3154,-9.17584" />
+    <path
+       id="path1148"
+       style="fill:none;stroke:#000000;stroke-width:0.264584;stroke-dasharray:none;stroke-dashoffset:17.9999;paint-order:markers stroke fill"
+       d="m 92.032709,167.63039 5.718872,-9.8726" />
+    <path
+       id="path1144"
+       style="fill:none;stroke:#000000;stroke-width:0.264584;stroke-dasharray:none;stroke-dashoffset:17.9999;paint-order:markers stroke fill"
+       d="m 89.343055,167.63012 5.778948,-9.97551" />
+    <path
+       id="path1142"
+       style="fill:none;stroke:#000000;stroke-width:0.264584;stroke-dasharray:0.793749, 0.264584;stroke-dashoffset:0;paint-order:markers stroke fill"
+       d="m 87.045569,171.596 2.297486,-3.96588 m -0.897298,6.19248 3.586952,-6.19221 m -1.844279,7.82813 4.53484,-7.82835 m -2.511061,8.97591 5.200283,-8.97589 m -2.890951,9.63327 5.580989,-9.63329 m -2.915827,9.67689 5.605857,-9.67691 m -2.3598,8.71527 5.04892,-8.71532" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.661458;stroke-dasharray:none;stroke-dashoffset:17.9999;paint-order:markers stroke fill"
+       d="M 46.886799,167.573 H 152.47496"
+       id="path195" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.661458;stroke-dasharray:none;stroke-dashoffset:17.9999;paint-order:markers stroke fill"
+       d="m 77.465971,167.573 h 37.122179 l 22.52715,-22.55143 -32.04564,-37.16216 -34.901212,27.6334 z"
+       id="path911"
+       inkscape:export-filename="..\riem_map_poly_open_edges.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+  </g>
+</svg>

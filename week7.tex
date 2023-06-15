@@ -1,0 +1,111 @@
+\section{Normal Families}
+Recall that a metric space is compact if and only if every (infinite) sequence has a convergent (infinite) subsequence. The metrizable space we are interested in is $\Cont(\Omega)$ or more precisely in its subspace $\Hom(\Omega)$. We will say that a family of continuous complex-valued functions $\mathscr{S} \subset \Cont(\Omega)$ is \textit{normal} if every (infinite) sequence in $\mathscr{S}$ has an (infinite) subsequence that converges, although the limit may not lie in $\mathscr{S}$. Equivalently then, normal families are exactly the subsets of $\Cont(\Omega)$ with compact closure. An example of a normal family is $\mathscr{S} := \{f_n(z) = z^n : n \in \N\}$ on the unit disk. We know that the $f_n$ converge (uniformly and absolutely) on compact subsets of the disk $D$ but the limit does not lie in $\mathscr{S}$.
+
+A nice way of checking that a family of functions is normal is the following.
+\begin{lemma}\label{lem:suitable-cover}
+    A family of continuous functions $\scrS \subset \Cont(\Omega)$ is normal if and only if for every `suitable' cover $\{E_i\}$ (which is to say that $\Omega = \bigcup_i E_i$) and every $i$ we have that every infinite sequence in $\scrS$ has a subsequence which converges in $E_i$.
+\end{lemma}
+\begin{remark}
+    What we mean by a suitable cover will be made clear in the proof.
+\end{remark}
+\begin{proof}
+    The reverse direction is clear since we are given that in particular every sequence has a convergent subsequence. Thus we only need to show the converse. 
+    
+    We want to show that if the suitable cover condition holds then $\scrS$ is normal. So let $\{f_n\}$ be a a sequence in $\scrS$. Then we know by assumption that there is a subsequence $\{f_n^{(1)}\}$ which converges uniformly on $E_1$. Then there also exists a subsequence $\{f_n^{(2)}\}$ of $\{f_n^{(1)}\}$ that converges uniformly on $E_2$. Continuing in this manner we can construct a subsequence $\{f_n^{(k)}\}$ of $\{f_n^{(k - 1)}\}$ that converges on $E_k$. Then the diagonal sequence $\{f_n^{(n)}\}$ converges on $E_i$ for every $i$. Therefore a cover will be suitable if this allows us to conclude that we have convergence on all compact subsets of $\Omega$. This means that convergence on one suitable cover immediately implies convergence on other suitable covers.
+\end{proof}
+
+A simple example of a suitable cover would be a covering by closed disks in $\Omega$ whose interiors cover $\Omega$. If $K$ is a compact subset, then it is contained in the union of finitely many of the disks so we have uniform convergence on $K$. Another example of a suitable cover is a family of compact sets $\{K_i\}$ with $K_1 \subset K_2 \subset \cdots$ so that $\Omega = \bigcup K_i$. Then any compact set $K$ of $\Omega$ is contained in one of the $K_i$ so convergence on $K_i$ automatically implies convergence on $K$. 
+
+When talking of function spaces, the natural starting point is the Arzelà–Ascoli Theorem. For this we first need to discuss equicontinuity.
+\begin{definition}[Equicontinuity]
+    Let $X$ be any subset of $\C$ and let $\scrS \subset \Cont(X)$ be a family of continuous functions. Then we say that $\scrS$ is equicontinuous at $a \in X$ if for every $\epsilon > 0$ there is some $\delta > 0$ such that for any $f \in \scrS$ we have $\abs{f(z) - f(a)} < \epsilon$ for every $z \in X$ satisfying $\abs{z - a} < \delta$. We say $\scrS$ is equicontinuous if $\scrS$ is equicontinuous at every point and we say it is uniformly equicontinuous if $\delta$ can be chosen independently of the point $a \in X$.
+\end{definition}
+\begin{remark}
+    In particular $\delta$ only depends on $\epsilon$ and not on any particular $f \in \scrS$. 
+\end{remark}
+
+\begin{example}
+An example of a (uniformly) equicontinuous family of functions is the set of holomorphic functions (on the unit disk say) with $\abs{f'} \leq M$. This collection of functions satisfies $\abs{f(z) - f(w)} \leq M\abs{z - w}$ for $z, w \in D$ for every $f$ so given any $\epsilon > 0$ we can take $\delta = \epsilon/M$.
+\end{example}
+
+The Arzelà–Ascoli Theorem typically says that a family of continuous functions has a convergent subsequence if it is equicontinuous and bounded. In our case, we need the functions to have a uniform bound on compact sets (although the bound may vary with the sets). In fact due to equicontinuity, it is sufficient to require boundedness at a single point as the following proposition demonstrates.
+
+\begin{proposition}\label{prop:equicont-gives-unif-bound}
+    If $\Omega$ is a domain and $\scrS$ is an equicontinuous family of functions then the following are equivalent
+    \begin{enumerate}
+        \item There exists some $z_0 \in \Omega$ such that $\{f(z_0): f \in \scrS\}$ is bounded
+        \item For every $z \in \Omega$, $\{f(z): f \in \scrS\}$ is bounded
+        \item $\scrS$ is locally bounded, which is to say that for every $z_0 \in \Omega$ there is some open neighbourhood $U$ of $z_0$ in $\Omega$ such that $\abs{f(z)} \leq M$ for every $z \in U$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Equicontinuity implies that for every $w \in \Omega$, there exists a disk $D_w \subset \Omega$ centered at $w$ such that $\abs{f(z) - f(w)} < 1$ for all $z \in D_w$ for all $f \in \scrS$.
+
+    In order to see that 1) $\Rightarrow$ 2), let $U := \{z \in \Omega: \scrS \text{ is bounded at }z\}$. By above the statement about the implication of equicontinuity we see that $U$ must be open. But this statement also shows that the complement of $U$ must be open. Suppose $\scrS$ is unbounded at some $w$ which is to say that the set $\{f(w): f \in \scrS\}$ is unbounded. But then consider the above statement again, we know that $\abs{f(z) - f(w)} < 1$ so that $\abs{f(w)} - 1 < \abs{f(z)} < \abs{f(w)} + 1$ for all $z$ sufficiently close to $w$ implying for $z$, the set $\{f(z): f \in \scrS\}$ is also unbounded. Hence $U$ is both open and closed by 1) it is non-empty so $U = \Omega$.
+
+    We see that 2) $\Rightarrow$ 3) is immediate. Let $z_0$ be any point in $\Omega$. We again use the above implication of equicontinuity to conclude that $\scrS$ is (uniformly) bounded on $D_{z_0}$. Finally 3) $\Rightarrow$ 1) is immediate.
+\end{proof}
+
+Thus we can state the theorem as follows.
+\begin{theorem}[Arzelà–Ascoli]\label{thm:arzela-ascoli}
+    Let $\Omega$ be a domain in $\C$. Then $\scrS \subset \Cont(\Omega)$ is normal if and only if 
+    \begin{enumerate}
+        \item $\scrS$ is equicontinuous and
+        \item There exists some $z_0 \in \Omega$ such that $\{f(z_0): f \in \scrS\}$ is bounded
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Suppose first that $\scrS$ is normal. Further suppose there is some $z_0 \in \Omega$ such that $\scrS$ is not continuous at $z_0$. This means there exists some $\epsilon > 0$ such that there is a sequence of points $\{z_n\} \subset \Omega$ and a sequence of functions $\abs{f_n(z_n)}$ where $\abs{z_n - z_0} < 1/n$ but $\abs{f_n(z_n) - f_n(z_0)} \geq \epsilon$. 
+
+    Now choose $n_0$ so that the closed disk $\abs{z - z_0} \leq 1/n_0$ is contained in $\Omega$. Since $\scrS$ is normal, we know that $\{f_n\}$ contains a subsequence that converges on this disk. Passing to this subsequence and relabelling, we can assume that $\{f_n\}$ itself converges to some $f$ on this disk. Then 
+    \begin{align*}
+        \epsilon &\leq \abs{f_n(z_n) - f_n(z_0)}\\ 
+        &\leq \abs{f_n(z_n) - f(z_n)} + \abs{f(z_n) - f(z_0)} + \abs{f(z_0) - f_n(z_0)} 
+    \end{align*} 
+    By uniform convergence of $f_n$ to $f$, for sufficiently large $n$, we can ensure that the first and last term are less than $\epsilon/3$. By continuity of $f$, for large $n$ the middle term can be be made less than $\epsilon/3$. This leads to a contradiction. Therefore $\scrS$ is indeed an equicontinuous family. 
+
+    Let $z_0$ be such that $\{f(z_0): f \in \scrS\}$ is unbounded. Then there is a sequence of functions $\{f_n\}$ such that $f_n(z_0) \to \infty$. But normality implies that there is a subsequence that converges at $z_0$ leading to a contradiciton. Therefore $\{f(z_0): f \in \scrS\}$ is bounded for every $z_0$. 
+
+    Now suppose $\scrS$ is equicontinuous and bounded at a point. We will show that it is necessarily normal and we will use the usual diagonal argument one uses for the proof.
+
+    Let $T = \{z_k\}$ be a countable dense subset of $\Omega$ and let $\{f_n\}$ be any sequence in $\scrS$. We know by \autoref{prop:equicont-gives-unif-bound} that $\scrS$ is bounded at every point in $\Omega$. In particular then $\{f_n(z_1)\}$ is a bounded sequence in $\C$ so there exists a subseqence $f_n^{(1)}$ so that $\{f_n^{(1)}(z_1)\}$ converges. Then $\{f_n^{(1)}(z_2)\}$ is bounded as well so there exists a subsequence of $\{f_n^{(1)}\}$ which we call $\{f_n^{(2)}\}$ so that $\{f_n^{(2)}(z_2)\}$ converges. We then continue in this manner. Notice that $\{f_n^{(n)}\}$ converges at $z_k$ for all $k$. We will relabel this to be the sequence $\{f_n\}$ itself. We want to show that $\{f_n\}$ converges uniformly on compact subsets of $\Omega$. 
+
+    We will show that for any $\epsilon > 0$ there exists a natural number $M$ such that 
+    $$\abs{f_p(z) - f_q(z)} < \epsilon$$
+    on $K$ for all $p, q \geq M$. This will show that $\{f_n|_K\}$ is Cauchy and hence converges uniformly on $K$. 
+    Let $K$ be any compact subset of $\Omega$. Then in fact $\scrS$ is uniformly equicontinuous on $K$ (exercise). Then there exists some $\delta > 0$ such that all $z, w \in K$ we have if $\abs{z - w} < \delta$ then $\abs{f(z) - f(w)} < \epsilon/3$. There exists a finite set $z_{k_1}, \dots, z_{k_n} \in T \cap K$ such that $\delta$ disks centered at the $z_{k_j}$ cover $K$. Now take $z \in K$ arbitrary. There is some $z_{k_j}$ such that $\abs{z - z_{k_j}} < \delta$. Then 
+    \begin{align*}
+        \abs{f_p(z) - f_q(z)} \leq \abs{f_p(z) - f_p(z_{k_j})} + \abs{f_p(z_{k_j}) - f_q(z_{k_j})} + \abs{f_q(z_{k_j}) + f_{q}(z)}
+    \end{align*}
+    We know the first and last term are less than $\epsilon/3$ by uniform equicontinuity. The central term can be made less than $\epsilon/3$ by taking $p, q$ large enough (this is our choice of $M$) since $f_n$ converge on all the $z_k \in T$.
+\end{proof}
+
+Arzelà–Ascoli is a general theorem about compact subsets in $\Cont(\Omega)$ but we are really interested in $\Hom(\Omega)$. Montel's (little) theorem tells us what the compact subsets in this space are.
+\begin{theorem}[Montel's (Little) Theorem] \label{thm:montel-thm}
+    Let $\Omega \subset \C$ be a domain and consider $\scrS \subset \Hom(\Omega)$. Then the following are equivalent:
+    \begin{enumerate}
+        \item $\scrS$ is normal
+        \item $\scrS$ is locally bounded
+        \item $\scrS' := \{f' : f \in \scrS\}$ is locally bounded and there is some $z_0 \in \Omega$ such that $\{f(z_0)\}$ is bounded. 
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    1) $\Rightarrow$ 2) is an immediate application of Arzelà–Ascoli, since the theorem tells us that normal families are equicontinuous and locally bounded. For 2) $\Rightarrow$ 3) we use Cauchy's inequalities.
+
+    Let $z_0 \in \Omega$ be given. By local boundedness, we know there exists some $r > 0$ and $M < \infty$ such that $\abs{f(z)} \leq M$ for all $\abs{z - z_0} < r$ and all $f \in \scrS$. Then by Cauchy's inequalities for $n = 1$ (see the discussion following \autoref{thm:holom-tfae}) and considering the closed disk of radius $r/2$ we have 
+    $$\abs{f'(z_0)} \leq \frac{2M}{r}$$
+    for all $f \in \scrS$.
+
+    Finally for 3) $\Rightarrow$ 1), it is enough to show that $\scrS'$ being locally bounded implies that $\scrS$ is equicontinuous (the remainder of the statement follows from Arzelà–Ascoli). So given $w \in \Omega$, we know that $\abs{f'(z)} \leq M$ in a disk $D$ of radius $r$ centered at $w$. Then $\abs{f(z) - f(w)} \leq M\abs{z - w}$ for $z \in D$ (by the generalised Mean Value Theorem). This holds for all $f$ thus $\scrS$ is equicontinuous at $w$. 
+\end{proof}
+We have the following immediate corollary.
+\begin{corollary}
+    A subset $\scrS \subset \Hom(\Omega)$ is compact if and only if $\scrS$ is closed and locally bounded.
+\end{corollary}
+
+We will see that Arzelà–Ascoli holds in more general circumstances than we need above; in particular it holds for families of continuous functions with values in a complete metric space. A particular example of such a space is the Riemann sphere with the chordal metric, which is defined by 
+$$ d(z, w) = \frac{2 \abs{z - w}}{\sqrt{1 + \abs{z}^2} \sqrt{1 + \abs{w}^2}} $$
+This is the Euclidean distance in $\R^3$ between the corresponding points on the unit sphere as given by stereographic projection. An important property of the chordal metric is that 
+$$d(z, w) = d \left( \frac{1}{z}, \frac{1}{w} \right)$$
+
+Moreover, since norms in finite dimensions are equivalent, we have that the complex plane with the topology induced by the chordal metric is equivalent to the usual Euclidean topology. Notice also that we have $d(z, w) \leq 2$ for all $z, w$ (this is the distance between antipodal points on the unit sphere). But then the Arzelà–Ascoli theorem tells us that a family of continuous functions with values in the Riemann sphere is normal (in the chordal metric) if and only if the they are equicontinuous in the chordal metric since all distances are already automatically bounded by 2. 

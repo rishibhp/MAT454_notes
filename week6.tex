@@ -1,0 +1,163 @@
+We know a lot about convergence of series so it would be nice if we could translate the convergence of infinite products to the convergence of infinite sums. The way we will do this is by using $\log$ of course. 
+\begin{theorem}
+    The infinite product $\prod_{n = 1}^\infty (1 + a_n)$ with $1 + a_n \neq 0$ converges if and only if $\sum_{n = 1}^\infty \log(1 + a_n)$ does. 
+\end{theorem}
+\begin{proof}
+    The above makes sense because we know for sufficiently large $n$, the $b_n$ in the original product tend to 1 (which is to say $a_n$ tend to 0). This means for sufficiently large $n$, $1 + a_n$ is away from 0 so $\log(1 + a_n)$ is well-defined and we can choose a consistent branch of $\log$ for all $a_n$. We will of course use the principal branch of $\log$. 
+
+    Let $S_n$ denote the partial sum of the series and let $P_n$ be the partial product of the infinite product. In particular we have $P_n = e^{S_n}$. Therefore if $S_n \to S$, it follows by continuity of the exponential that $e^{S_n} \to e^S =: P$ which in particular is non-zero. Therefore if the series converges then so does the product.
+
+    Now suppose the product converges so we have $P_n \to P$. We want to say of course that $S_n \to \log(P)$. In fact this might not be true (where recall we are taking $\log$ to be the principal branch of $\log$). However the limit will differ from $\log(P)$ only by an integer multiple of $2\pi$. In order to see this note that for every $n$ there exists an integer $h_n$ such that
+    $$\log \left( \frac{P_n}{P} \right) = S_n - \log(P) + h_n \cdot 2\pi i$$
+    We will show that all $h_n$ are equal. We see that 
+    $$(h_{n + 1} - h_n)2\pi i = \log \left( \frac{P_{n + 1}}{P} \right) - \log \left( \frac{P_n}{P} \right) + \log(1 + a_{n + 1})$$
+    Notice the left hand side is purely imaginary and the imaginary component of $\log(z)$ is simply the argument. Thus equating imaginary parts we get 
+    $$(h_{n + 1} - h_n)2\pi = \underbrace{\arg \left( \frac{P_{n + 1}}{P} \right) - \arg \left( \frac{P_n}{P} \right)}_{\to 0} + \underbrace{\arg(1 + a_{n + 1})}_{\leq \pi}$$
+    Since we are taking the principal branch of $\log$ we know that $\abs{\arg(z)} \leq \pi$ for any $z$. Moreover by convergence we know that $\arg(P_{n+1}/P) - \arg(P_n/P) \to 0$. Therefore for large $n$ the right hand side can be made smaller than $\pi + \epsilon$ (for any $\epsilon > 0$) in absolute value. However if $h_{n + 1}, h_n$ are different then the left hand side is at least $2\pi$ in absolute value (recall that the $h_n$ are integers). Therefore we must have $h_{n + 1} = h_n$ (for all $n$ sufficiently large). Therefore
+    $$S_n \to \log P + 2\pi i h$$
+\end{proof}
+
+We say that the product $\prod_{n = 1}^\infty (1 + a_n)$ converges absolutely if $\sum_{n = 1}^\infty \log(1 + a_n)$ converges absolutely. This series converges absolutely if and only if $\sum_{n =1}^\infty a_n$ converges absolutely. This is because 
+$$\lim_{z \to 0} \frac{\log(1 + z)}{z} = 1$$
+Therefore 
+$$\abs{ \frac{\log(1 + a_n)}{a_n} - 1} < \epsilon$$
+for $n$ large enough. This means that
+$$(1 - \epsilon) \abs{a_n} < \abs{\log(1 + a_n)} < (1 + \epsilon) \abs{a_n}$$
+Therefore if $\sum \abs{a_n}$ converges we can compare it with $\sum \abs{\log(1 + a_n)}$ via the right inequality and if $\sum \abs{\log(1 + a_n)}$ converges we can compare it with $\sum \abs{a_n}$.
+
+\secbreak
+
+Having discussed infinite products of complex number we naturally want to discuss infinite products of complex-valued functions. 
+\begin{definition}
+    Given a sequence of functions $f_n(z)$ defined on an open set $\Omega$, we say that $\prod f_n(z)$ converges on compact $K \subset \Omega$ if 
+    \begin{enumerate}
+        \item $f_n(z) \to 1$ uniformly on $K$
+        \item $\sum \log f_n$ is uniformly and absolutely convergent on $K$
+    \end{enumerate}
+\end{definition}
+By the previous theorem, the above conditions imply that the partial products converge uniformly on compact sets. 
+
+We state some trivial properties of infinite products.
+\begin{theorem}
+    Suppose $f_n(z)$ is a sequence of functions on an open subset $\Omega$. Suppose $\prod f_n(z)$ converges absolutely and uniformly to the function $f(z)$ on compact subsets of $\Omega$. Then
+    \begin{enumerate}
+        \item $f(z)$ is holomorphic on $\Omega$ and we have an `associativity law'
+        $$f = f_1 f_2 \dots f_p \prod_{n > p} f_n$$
+        \item the set of zeroes of $f$, $Z(f)$ is
+        $$Z(f) = \bigcup_{n = 1}^\infty Z(f_n)$$
+        and the multiplicity of any zero of $f$ is the sum of multiplicities of the point at all $f_n$
+        \item the series of meromorphic functions $\sum f_n'/f_n$ converge uniformly and absolutely on compact subsets of $\Omega$ and
+        $$\sum_{n = 1}^\infty \frac{f_n'}{f_n} = \frac{f'}{f}$$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    % TODO: Why need U relatively compact?
+    The first two statements are obvious. Let us then prove the third statement. Let $K$ be a compact subset of $\Omega$. Suppose we can choose a consistent branch of $\log$ for all the $f_n|_K$ (say because they only take values in a simply connected set not containing 0). Then we would have 
+    \begin{align*}
+        \log f = \sum_{n = 1}^\infty \log f_n
+    \end{align*}
+    and differentiating both sides (recall we can different the series term by term) we would have 
+    \begin{align*}
+        \frac{f'}{f} = \sum_{n = 1}^\infty \frac{f_n'}{f_n}
+    \end{align*}
+
+    Of course it is possible that we do \textit{not} have a consistent choice of $\log$ for all the $f_n$. For example, they might be 0 at some points. On the other hand, since we are working on a compact set, we know that $f_n \to 1$ uniformly on $K$. Therefore for sufficient large $n$ we do have a consistent choice of $\log$. Suppose $p$ is such that for $n > p$ we have $\abs{f_n(z) - 1} < 1$ for all $z \in K$. Then we define 
+    $$g_p := \exp \left( \sum_{n > p} \log f_n \right)$$
+    In fact this is not quite sufficient. Because we want to work with holomorphic properties of $g_p$, we need to be working on an open set but $g_p$ above is only defined on $K$. In order to fix this we will instead work on a slighly larger open set $U$ which contains the given compact set $K$ and whose closure is compact. Because the closure of $U$ is compact, we can still pick a sufficiently large $p$ to make $g_p$ well-defined on $U$. 
+
+    From above it follows that 
+    \begin{align*}
+        \frac{g_p'}{g_p} = \sum_{n > p} \frac{f_n'}{f_n}
+    \end{align*}
+    
+    We have
+    $$ f = f_1 \cdots f_p \cdot g_p  $$
+    From the product rule and above equation it follows that
+    \begin{align*}
+        \frac{f'}{f} = \sum_{n = 1}^p \frac{f_n'}{f_n} + \frac{g_p'}{g_p} = \sum_{n = 1}^\infty \frac{f_n'}{f_n}
+    \end{align*}
+
+    % Let $U$ be a relatively compact subset of $\Omega$. Then the function 
+    % $$g_p := \exp \left( \sum_{n > p} \log f_n \right)$$
+    % is well-defined and holomorphic for sufficiently large $p$. Hence we have 
+    % $$f = f_1 \dots f_{p} g_p$$
+    % Then the product rule implies that 
+    % $$\frac{f'}{f} = \sum_{n = 1}^p \frac{f_n'}{f'} + \frac{g_p'}{g_p}$$
+
+    % However we also know that 
+    % \begin{align*}
+    %     \frac{g_p'}{g_p} = \sum_{n > p} \frac{f_n'}{f_n}
+    % \end{align*}
+    % This is because on compact sets we have 
+    % $$\log g_p = \sum_{n > p} \log f_n$$
+    % which converges absolutely and uniformly (by definition). Therefore we can differentiate this series term by term to give us 
+    % $$\frac{g_p'}{g_p} = \sum_{n > p} \frac{f_n'}{f_n}$$
+    % Substituting this back in we get
+    % $$\frac{f'}{f} = \sum_{n = 1}^\infty \frac{f_n'}{f_n}$$
+\end{proof}
+
+Let us try express $\sin$ as an infinite product. Let us consider $\sin(\pi z)$ so that the zeroes lie on the integers. Then the natural choice is 
+$$f(z) = z\prod_{n \neq 0} \left(1 - \frac{z}{n} \right) = z \prod_{n = 1}^\infty \left( 1 - \frac{z^2}{n^2} \right)$$
+which we wish to argue converges uniformly and absolutely on compact subsets of $\C$. But from above we know this is the same as showing that $\sum z^2/n^2$ converges absolutely and uniformly on compact sets and we know this holds true by comparison with $1/n^2$ (and the fact that on compact sets $\abs{z}$ is bounded).
+
+Therefore $f(z)$ is a holomorphic function with zeroes on the integers with each zero being simple. Then
+\begin{align*}
+    \frac{f'(z)}{f(z)} = \frac{1}{z} + \sum_{n = 1}^\infty \frac{2z}{z^2 - n^2} = \pi \cot(\pi z) = \frac{g'(z)}{g(z)}
+\end{align*}
+where $g(z) = \sin (\pi z)$. Since their logarithmic derivatives are equal we conclude that $f(z) = c g(z)$ where $c$ is some constant (this follows from consider $(f/g)'$ and concluding that it must be 0). We see that 
+$$\frac{f(z)}{z} \to 1$$
+as $z \to 0$ and 
+$$\frac{\sin(\pi z)}{z} \to \pi$$
+Hence the constant $c$ must be $1/\pi$. 
+
+Now we can ask the natural extension of the Mittag-Leffler Theorem: given a sequence of complex numbers, can we find an entire function $f$ where this sequence is exactly the zero set of $f$? 
+
+First suppose we want a function with no zeroes. We claim that any entire function $f$ which is non-zero everywhere is of the form $e^{g(z)}$ where $g(z)$ is entire. In order to see this, consider $f'/f$ which is also entire hence has an entire primitive $g(z)$. Then $f(z) e^{-g(z)}$ has 0 derivative since 
+$$(f(z) e^{-g(z)})' = f'(z) e^{-g(z)}  - f(z) g'(z) e^{-g(z)} = 0$$
+This means that $f(z) = A e^{g(z)}$ and we can absorb the constant $A$ into the exponent. 
+
+Naturally then if we want an entire function with a zero at the origin of order $m$ (possibly zero) and zeroes at $a_1, \dots, a_n$ (possibly with repetition), then the most general such function is 
+$$e^{g(z)} z^m \prod_{k = 1}^n \left(1 - \frac{z}{a_k} \right)$$
+
+For the case of infinitely many zeroes, we look to the following theorem by Weierstrass.
+\begin{theorem}[Weierstrass]
+    Given a sequence $\{a_k\}$ in $\C$ such that $\lim_{k \to \infty} a_k = \infty$, there exists an entire function with zeroes exactly $a_k$. The most general such function is of the form 
+    $$f(z) = e^{g(z)} z^m \prod_{k = 1}^\infty \left(1 - \frac{z}{a_k} \right) e^{P_k(z)}$$
+    where $a_k$ are all non-zero and where $P_k(z)$ are polynomials of the form
+    $$P_k(z) = \frac{z}{a_k} + \frac{1}{2} \left( \frac{z}{a_k} \right)^2 + \dots + \frac{1}{m_k} \left( \frac{z}{a_k} \right)^{m_k}$$
+\end{theorem}
+\begin{proof}
+    As usual, we convert the question of infinite products to a question of infinite sums. We know the given product converges if and only if 
+    $$\sum_{k = 1}^\infty \log \left(1 - \frac{z}{a_k} \right) + P_k(z)$$
+    We will deal with this much like we did with the \hyperref[thm:mittag-leffler]{Mittag-Leffler Theorem}, using terms from the Taylor series to ensure convergence.
+    
+    % We are using the principal branch of $\log$ so $g_k(z)$ necessarily lie in $\R \times (-\pi, \pi)$. 
+    Let us denote the terms of the above series by $g_k(z)$.
+    Recall that 
+    \begin{align*}
+        \log \left( 1 - \frac{z}{a_k} \right) = -\frac{z}{a_k} - \frac{1}{2} \left( \frac{z}{a_k} \right)^2 - \cdots 
+    \end{align*}
+    We are going to choose $P_k(z)$ to be first few terms of this Taylor series. The main question of course is how many terms should we take. Suppose we take the first $m_k$ terms (we will say precisely what $m_k$ should be shortly). Then
+    \begin{align*}
+        g_k(z) = -\frac{1}{m_k + 1} \left( \frac{z}{a_k} \right)^{m_k + 1} - \frac{1}{m_k + 2}  \left( \frac{z}{a_k} \right)^{m_k + 2} - \cdots 
+    \end{align*}
+    Suppose $\abs{z} \leq r$ and consider $a_k$ such that $\abs{a_k} > r$ (we are going to show that this tail of the series is convergent for a suitable choice of $m_k$) Then 
+    \begin{align*}
+        \abs{g_k(z)} &\leq \frac{1}{m_k + 1} \left( \frac{r}{\abs{a_k}} \right)^{m_k + 1} + \frac{1}{m_k + 2} \left( \frac{r}{\abs{a_k}} \right)^{m_k + 2} + \dots \\
+        &\leq \frac{1}{m_k + 1} \left( \frac{r}{\abs{a_k}} \right)^{m_k + 1} \left(1 + \frac{r}{\abs{a_k}} + \left(\frac{r}{\abs{a_k}}\right)^2 + \dots \right)\\
+        &= \frac{1}{m_{k} + 1} \left(\frac{r}{\abs{a_k}}\right)^{m_k + 1} \left( 1 - \frac{r}{\abs{a_k}} \right)^{-1}
+    \end{align*}
+    Notice that we can bound $(1 - r/\abs{a_k})^{-1}$ by a constant since $r$ is fixed and $a_k \to \infty$. Therefore if 
+    \begin{equation}\label{eq:new-series-conv}
+        \sum_{k = 1}^\infty \frac{1}{m_k + 1} \left( \frac{r}{\abs{a_k}} \right)^{m_k + 1}
+    \end{equation}
+    converges then $\sum g_k$ also does. Therefore we need to choose $m_k$ so \eqref{eq:new-series-conv} converges. A possible choice is $m_k = k$. 
+\end{proof}
+
+\begin{corollary}
+    Every meromorphic function on the plane is the quotient of two entire functions.
+\end{corollary}
+\begin{proof}
+    Suppose $h$ is a meromorphic function on the plane. Let $g$ be an entire function which has zeroes at exactly the poles of $h$ with the same multiplicities. Then $g(z) h(z)$ is entire on the plane. If we call this function $f$ then
+    $$h(z) = \frac{f(z)}{g(z)}$$
+\end{proof}
