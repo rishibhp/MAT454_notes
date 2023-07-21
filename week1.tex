@@ -9,7 +9,7 @@ Then the above condition is equivalent to saying there exists some $\phi(h)$ suc
 $$f(z + h) = f(z) + ch + \phi(h)h$$
 where $\lim_{h \to 0} \phi(h) = 0$.
 
-We can identify $\C$ with $\R^2$ and consider what conditions it places on the derivatives (in the real sense). So suppose we have $c = (a, b)$ and $h = (\xi, \eta)$. Then the map $ch$ becomes $(a + ib)(\xi + i \eta) = a\xi - b\eta + i(b \xi + a \eta)$. In terms of the real variables, we can write
+We can identify $\C$ with $\R^2$ and consider what conditions it places on the derivatives (in the real sense). So suppose we have $c = (a, b)$ and $h = (\xi, \eta)$. Then the map $h \mapsto ch$ becomes $\xi + i \eta \mapsto (a + ib)(\xi + i \eta) = a\xi - b\eta + i(b \xi + a \eta)$. In terms of the real variables, we get
 $$\matrix{\xi \\ \eta} \mapsto \matrix{a & -b\\b & a} \matrix{\xi \\ \eta}$$
 The matrix is the differential of $f$. Thus looking at the columns we see the following equation is satisfied
 $$\frac{\partial f}{\partial x} + i \frac{\partial f}{\partial y} = 0$$
@@ -22,7 +22,7 @@ which are another way of formulating the Cauchy-Riemann equations.
 
 Recall that if $f$ is differentiable, we have
 $$df = \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y}dy$$
-This means that for the identity map $z = x + iy$ we have
+This means that for the identity map $z = x + iy$ and conjugation map $\ol{z} = x - iy$ we have
 \begin{align*}
     dz &= dx + idy\\
     d\ol{z} &= dx - idy
@@ -54,7 +54,7 @@ The operator
 $$\Delta := \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}$$
 is often called the Laplacian. It is easy to verify from the definition that if a complex-valued function is harmonic then so are its real and imaginary parts. Using the definitions of $\frac{\partial}{\partial z}$ and $\frac{\partial}{\partial \ol{z}}$ we get
 $$\Delta = 4\frac{\partial^2}{\partial z \partial \ol{z}}$$
-This immediately implies that holomorphic functions are harmonic since they satisfy $\frac{\partial f}{\partial \ol{z}}$ is 0, which also means that the real and imaginary parts of a holomorphic function are harmonic. In fact the relationship between harmonic and holomorphic functions runs deeper than that. Any real-valued harmonic function is locally the real part of a holomorphic function, which is uniquely determined up to the addition of a constant (shown in \autoref{subsec:harmonic-func-revisit}). The holomorphic function need not be define globally. An example of a harmonic function whose associated holomorphic function is only locally defined is $\log(\abs{z})$. This is harmonic on $\C \setminus \{0\}$ but the corresponding holomorphic function would have to be $\log(z)$ which does not have a holomorphic branch on the entire punctured plane.
+This immediately implies that holomorphic functions are harmonic since they satisfy $\frac{\partial f}{\partial \ol{z}}$ is 0, which also means that the real and imaginary parts of a holomorphic function are harmonic. In fact the relationship between harmonic and holomorphic functions runs deeper than that. Any real-valued harmonic function is locally the real part of a holomorphic function, which is uniquely determined up to the addition of a constant (shown in \autoref{subsec:harmonic-func-revisit}). The holomorphic function need not be define globally. An example of a harmonic function whose associated holomorphic function is only locally defined is $\log\abs{z}$. This is harmonic on $\C \setminus \{0\}$ but the corresponding holomorphic function would have to be $\log(z)$ which does not have a holomorphic branch on the entire punctured plane.
 
 \subsection{Geometric Models}
 We are often interested in the behaviour of holomorphic functions at $\infty$ to the extent that we often include it in our domain. If we add the point at infinity to $\C$ we get $\C \cup \{\infty\}$ the extended complex plane. Two primary ways of modelling this space are the Riemann sphere and one-dimensional complex projective plane (which we will see are equivalent).
@@ -64,16 +64,23 @@ Recall that the plane is homeomorphic to the sphere without a point. Thus if we 
     S^2 \setminus \{N\} &\to \C\\
     (x, y, t) &\mapsto z := \frac{x + iy}{1 - t}
 \end{align*}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.7]{Images/riemann_sphere_chart.png}
+    \caption{Points in $\C$ can be identified with points in $S^2 \setminus \{N\}$}
+    \label{fig:riemann-sphere-chart}
+\end{figure}
+
 The point at infinity then is the north pole. We can cover this point by stereographic projection from the south pole where the chart is given by
 \begin{align*}
     S^2 \setminus \{S\} &\to \C\\
     (x, y, t) &\mapsto z' := \frac{x - iy}{1 + t}
 \end{align*}
-If we just wanted a chart, we would use $\frac{x + iy}{1 + t}$ which is the usual projection from $S^2\setminus \{S\}$. But since we want to impose a complex structure on $S^2$ we want the transition maps to the holomorphic so we take the complex conjugate instead. Note that with the above choice we have
+If we just wanted a chart, we would use $\frac{x + iy}{1 + t}$ which is the usual projection from $S^2\setminus \{S\}$. But since we want to impose a complex structure on $S^2$ we want the transition maps to be holomorphic so we take the complex conjugate instead. Note that with the above choice we have
 $$zz' = \frac{x + iy}{1 - t} \cdot \frac{x - iy}{1 + t} = \frac{x^2 + y^2}{1 - t^2} = 1$$
 This means that $z' = \frac{1}{z}$ which allows us to translate to coordinates at infinity. For example, given a map $f$ which is defined on the complement of a (large) disk, we say $f$ is holomorphic at $\infty$ if $f(\frac{1}{z})$ is holomorphic at $0$.
 
-A seemingly different but ultimately equivalent geometric model is the one dimensional complex projection space. Define $P^1(\C) := \C^2 \setminus \{0\}/\sim$ where $(x_0, x_1) \sim (y_0, y_1)$ if and only if there is some non-zero complex number $\lambda$ such that $(x_0, x_1) = \lambda (y_0, y_1)$. Let $[x_0, x_1]$ denote the equivalence class of $(x_0, x_1)$.
+A seemingly different but ultimately equivalent geometric model is the one-dimensional complex projective space. Define $P^1(\C) := \C^2 \setminus \{0\}/\sim$ where $(x_0, x_1) \sim (y_0, y_1)$ if and only if there is some non-zero complex number $\lambda$ such that $(x_0, x_1) = \lambda (y_0, y_1)$. Let $[x_0, x_1]$ denote the equivalence class of $(x_0, x_1)$.
 
 Once again we can cover this space with two coordinate charts. For $i = 0$ and $i = 1$ we define $U_i := \{[x_0, x_1] \in P^1(\C) : x_i \neq 0\}$. Then we can define charts
 \begin{align*}
@@ -88,7 +95,7 @@ and
 These are well-defined due the equivalence placed upon the point. These are both homeomorphisms onto $\C$. Once again we see that $zz' = 1$. This means that $P^1(\C)$ is obtained by gluing two copies of $\C$ along the complement of the origin by the formula $z' = \frac{1}{z}$, exactly like we had with the sphere.
 
 \subsection{Cauchy's Theorem}
-Much of complex analysis is about studying the properties of holomorphic functions and one of the fundamental results in this area is Cauchy's Theorem. Before we get to the theorem, we should maybe establish some basis facts about (differential) forms.
+Much of complex analysis is about studying the properties of holomorphic functions and one of the fundamental results in this area is Cauchy's Theorem. Before we get to the theorem, we should maybe establish some basic facts about (differential) forms.
 
 \begin{figure}[ht]
     \centering
@@ -130,7 +137,7 @@ If we have a disk, then it is much easier to check whether or not a form has a p
 \end{definition}
 By the above discusssion, this is equivalent to saying that $\omega$ has a local primitives. Moreover, if the integral over the boundary of small rectangles is 0, then the integral over the boundary of any rectangle is 0 since any rectangle can be cut into smaller rectangles.
 
-Importantly, however, closed forms need not have a primitive. The classic example of a form which has local primitives but not global ones is 
+Importantly, however, closed forms need not have a global primitive. The classic example of a form which has local primitives but not global ones is 
 $$ \omega = \frac{dz}{z}$$
 defined on $\C \setminus \{0\}$. Local primitives are easy to find since these are just branches of $\log(z)$. However $\omega$ cannot have a global primitive since the integral over the unit circle is not zero. If we define $\gamma(\theta) = e^{i \theta}$ for $\theta \in [0, 2\pi]$ then
 $$\int_\gamma \omega = \int_0^{2\pi} \frac{i e^{i\theta}}{e^{i \theta}} d\theta = 2\pi i$$
